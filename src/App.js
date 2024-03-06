@@ -1,25 +1,54 @@
-import logo from './logo.svg';
+// import Header from './Components/Header';
+// import './App.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import Main from './Components/Main';
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import { Provider } from 'react-redux';
+// import store from './redux/store';
+// import { Home, Product, Products, Cart, Login, Register } from "./pages"
+
 import './App.css';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+import { Home, Product, Products,  Cart, Login, Register } from "./pages"
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <BrowserRouter>
+    <Provider store={store}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/product" element={<Products />} />
+        <Route path="/product/:id" element={<Product />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
+      </Routes>
+    </Provider>
+  </BrowserRouter>
+);
+
+
+
+
+
+
+
+
+// function App() {
+//     return (
+//         <div className="App">
+//             <Header/>
+//             <Main/>
+//         </div>
+//     );
+// }
+
+// export default App;
